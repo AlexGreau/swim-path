@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './App.css'
+import Hex from './components/Hex'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [hexCount, setHexCount] = useState(0)
 
   return (
     <>
@@ -10,16 +11,13 @@ function App() {
         <h1>Swim Path</h1>
       </div>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => setHexCount((hexCount) => hexCount + 1)}>
+          hex count is {hexCount}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        {Array.from({ length: hexCount }).map((_, i) => (
+          <Hex key={i} size={100} fill="rgba(53, 53, 172, 1)" title={`Hexagon ${i + 1}`} />
+        ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
